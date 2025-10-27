@@ -1,0 +1,22 @@
+# 🐍 Python virtual environment
+venv/
+
+# ⚙️ Python cache and compiled files
+__pycache__/
+*.pyc
+
+# 🔐 Environment variables
+.env
+
+# 🗑️ System and temporary files
+*.log
+*.DS_Store
+
+# 📦 Package metadata (optional cleanup)
+*.egg-info/
+dist/
+build/
+
+# 📊 Data outputs (optional: ignore if large or auto-generated)
+*.csv
+*.parquet
