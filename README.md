@@ -9,14 +9,14 @@ This project analyzes NYC taxi trip data using a structured data pipeline and Po
 - Power BI
 
 ## Pipeline Structure
-- **Bronze Layer**: Raw Parquet files loaded and cleaned
-- **Silver Layer**: Data transformed and stored in PostgreSQL
-- **Gold Layer**: Monthly metrics calculated and exported
+- Bronze Layer: Raw Parquet files loaded and cleaned
+- Silver Layer: Data transformed and stored in PostgreSQL
+- Gold Layer: Monthly metrics calculated and exported
 
 ## Dashboard Visuals
-- **Monthly Revenue Trend** (Line Chart)
-- **Average Trip Percentage by Month** (Column Chart)
-- **Trips vs Passengers per Month** (Stacked Bar Chart)
+- Monthly Revenue Trend (Line Chart)
+- Average Trip Percentage by Month (Column Chart)
+- Trips vs Passengers per Month (Stacked Bar Chart)
 
 ## Key Metrics
 - `total_revenue`
