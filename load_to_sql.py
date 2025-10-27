@@ -2,30 +2,34 @@ import os
 import pandas as pd
 from sqlalchemy import create_engine
 from urllib.parse import quote_plus
+from dotenv import load_dotenv
+
+# 🔐 Load environment variables from .env file
+load_dotenv()
 
 # 📁 Directory containing Parquet files
 DATA_DIR = "data"
 TABLE_NAME = "raw_taxi_data"
 
-# 🔐 PostgreSQL connection settings
+# 🔐 PostgreSQL connection settings from .env
 DB_CONFIG = {
-    "user": "postgres",
-    "password": "Abayomi01@",       # ← Your actual password
-    "host": "127.0.0.1",
-    "port": "5432",
-    "database": "nyc_taxi_pipeline"
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD"),
+    "host": os.getenv("DB_HOST"),
+    "port": os.getenv("DB_PORT"),
+    "database": os.getenv("DB_NAME")
 }
 
 # 🔐 Encode password safely for URL
 encoded_password = quote_plus(DB_CONFIG["password"])
 
-# 🔌 Create SQLAlchemy engine (force TCP/IP on Windows)
+# 🔌 Create SQLAlchemy engine
 engine_url = (
     f"postgresql+psycopg2://{DB_CONFIG['user']}:{encoded_password}"
     f"@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['database']}"
 )
 print(f"🔌 Connecting to PostgreSQL with URL: {engine_url}")
-engine = create_engine(engine_url, connect_args={"host": "127.0.0.1"})
+engine = create_engine(engine_url, connect_args={"host": DB_CONFIG["host"]})
 print("✅ SQLAlchemy engine created successfully.")
 
 # 🚛 Load Parquet files into PostgreSQL
